@@ -8,15 +8,13 @@ import librosa.display
 from pydub import AudioSegment
 from pydub.playback import play
 
-filePath = 'audio/Jay_Chou_Far_Away.mp3'
+filePath = 'audio/畫心.mp3'
 
 # Load an example with vocals.
 y, sr = librosa.load(filePath, duration=120)
 
-
 # And compute the spectrogram magnitude and phase
 S_full, phase = librosa.magphase(librosa.stft(y))
-
 
 # Plot a 5-second slice of the spectrum
 idx = slice(*librosa.time_to_frames([30, 35], sr=sr))
@@ -87,4 +85,4 @@ sound_CentersOut = sound_monoL.overlay(sound_monoR_inv)
 
 # Export merged audio file
 fh = sound_CentersOut.export(
-    filePath.lstrip('.mp3') + '-extractVocals.mp3', format="mp3")
+    filePath + '-extractVocals.mp3', format="mp3")
